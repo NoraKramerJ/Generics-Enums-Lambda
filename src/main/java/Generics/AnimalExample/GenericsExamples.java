@@ -3,13 +3,18 @@ package Generics.AnimalExample;
 import lombok.Data;
 
 @Data
-public class GenericsExamples<T extends Animal,AnimalBehavior,Cat,Dog> {
+public class GenericsExamples<T extends Animal > {
 
 
-    T animalSounds;
+T animalToPrint;
+
+    public GenericsExamples(T animalToPrint) {
+        this.animalToPrint = animalToPrint;
+    }
 
     public void print(){
-        System.out.println(animalSounds);
+animalToPrint.drink();
+
 
     }
 
