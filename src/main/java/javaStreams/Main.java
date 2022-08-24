@@ -18,8 +18,10 @@ public class Main {
 
    // females.forEach(System.out::println);
    List<Person> sortedByAge= PersonData.getAll().stream().
-           sorted(Comparator.comparing(Person::getAge).reversed()).collect(Collectors.toList());
+           sorted(Comparator.comparing(Person::getAge).thenComparing(Person::getGender).reversed()).collect(Collectors.toList());
      sortedByAge.forEach(System.out::println);
+
+
   }
 
 
