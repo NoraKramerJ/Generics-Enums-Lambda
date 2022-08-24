@@ -17,7 +17,8 @@ public class Main {
             .equals(Gender.FEMALE)).collect(Collectors.toList());
 
    // females.forEach(System.out::println);
-   List<Person> sortedByAge= PersonData.getAll().stream().sorted(Comparator.comparing(Person::getAge)).collect(Collectors.toList());
+   List<Person> sortedByAge= PersonData.getAll().stream().
+           sorted(Comparator.comparing(Person::getAge).reversed()).collect(Collectors.toList());
      sortedByAge.forEach(System.out::println);
   }
 
