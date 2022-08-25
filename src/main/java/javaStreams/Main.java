@@ -33,12 +33,27 @@ boolean allMatch=PersonData.getAll().stream().allMatch(p->p.getAge()>24);
 
       //Max
 
-     Optional<Person>max= PersonData.getAll().stream().max(Comparator.comparing(Person::getAge));
+     Optional<Person>max= PersonData.getAll().stream()
+             .max(Comparator.comparing(Person::getAge));
       System.out.println(max.get());
 
       //Min
-      Optional<Person>min= PersonData.getAll().stream().min(Comparator.comparing(Person::getAge));
+      Optional<Person>min= PersonData.getAll().stream()
+              .min(Comparator.comparing(Person::getAge));
       System.out.println(min.get());
+
+      //Group
+Map<Gender,List<Person>>groupByGender=PersonData.getAll().stream()
+        .collect(Collectors.groupingBy(Person::getGender));
+  //groupByGender.forEach((gender, people) -> {
+      //System.out.println(gender);
+    //  people.forEach(System.out::println);
+  //});
+
+      Optional<String> oldestFemaleAge=PersonData.getAll().stream().filter(p->p.getGender().equals(Gender.FEMALE))
+              .max(Comparator.comparing(Person::getAge)).map(Person::getName);
+      System.out.println(oldestFemaleAge.get());
+
   }
 
 
